@@ -35,7 +35,7 @@ void setup()
 
 void loop()
 {
-  // VERDE
+  // LED VERDE
   if (digitalRead(botaoVerde) == LOW)
   {
     apagarTodos();
@@ -45,7 +45,7 @@ void loop()
     digitalWrite(ledVerde, LOW);
   }
 
-  // VERMELHO
+  // LED VERMELHO
   if (digitalRead(botaoVermelho) == LOW)
   {
     apagarTodos();
@@ -55,7 +55,7 @@ void loop()
     digitalWrite(ledVermelho, LOW);
   }
 
-  // AMARELO
+  // LED AMARELO
   if (digitalRead(botaoAmarelo) == LOW)
   {
     apagarTodos();
@@ -65,7 +65,7 @@ void loop()
     digitalWrite(ledAmarelo, LOW);
   }
 
-  // CINZA
+  // LED CINZA
   if (digitalRead(botaoCinza) == LOW)
   {
     apagarTodos();
@@ -75,7 +75,7 @@ void loop()
     digitalWrite(ledCinza, LOW);
   }
 
-  // AZUL
+  // LED AZUL
   if (digitalRead(botaoAzul) == LOW)
   {
     apagarTodos();
