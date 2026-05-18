@@ -1,185 +1,170 @@
 <div align="center">
 
-# 🏢 Elevador Inteligente
-### Desenvolvendo elevador no arduino no Tinkercad (Paulo)
+<br/>
 
-<br>
+```
+███████╗██╗     ███████╗██╗   ██╗ █████╗ ██████╗  ██████╗ ██████╗
+██╔════╝██║     ██╔════╝██║   ██║██╔══██╗██╔══██╗██╔═══██╗██╔══██╗
+█████╗  ██║     █████╗  ██║   ██║███████║██║  ██║██║   ██║██████╔╝
+██╔══╝  ██║     ██╔══╝  ╚██╗ ██╔╝██╔══██║██║  ██║██║   ██║██╔══██╗
+███████╗███████╗███████╗ ╚████╔╝ ██║  ██║██████╔╝╚██████╔╝██║  ██║
+╚══════╝╚══════╝╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝
+```
 
-![Arduino](https://img.shields.io/badge/Arduino-UNO-00979D?style=for-the-badge&logo=arduino&logoColor=white)
-![Tinkercad](https://img.shields.io/badge/Tinkercad-Simulação-FF6D00?style=for-the-badge&logo=autodesk&logoColor=white)
-![Language](https://img.shields.io/badge/Linguagem-C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Concluído-2ea44f?style=for-the-badge)
+### Simulação de Elevador Inteligente com Arduino & Tinkercad
 
-<br>
+<br/>
 
-> Simulação de um sistema de elevador inteligente com **6 andares** desenvolvida em Arduino UNO no Tinkercad.
-> Expansão do projeto original de 3 andares com amis dificuldades, atendendo ao cenário de ampliação de um prédio comercial imposto.
+[![Arduino](https://img.shields.io/badge/Arduino-UNO-00979D?style=for-the-badge&logo=arduino&logoColor=white)](https://www.arduino.cc/)
+[![Tinkercad](https://img.shields.io/badge/Tinkercad-Simulação-FF6B35?style=for-the-badge&logo=autodesk&logoColor=white)](https://www.tinkercad.com/)
+[![C++](https://img.shields.io/badge/C%2B%2B-Embedded-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org/)
+[![SENAI](https://img.shields.io/badge/SENAI-IoT%20%7C%20Aulas%2024%20%26%2025-003082?style=for-the-badge)](https://www.senai.br/)
+
+<br/>
+
+> **Expandindo de 3 para 6 andares — sem tocar na lógica principal.**
+> Um projeto de sistemas embarcados que demonstra escalabilidade real de software.
+
+<br/>
 
 </div>
 
 ---
 
-## 📋 Sobre o Projeto
+## 🏢 Sobre o Projeto
 
-Uma construtora ampliou um prédio comercial que anteriormente possuía apenas **3 andares**. Após a reforma, o edifício passou a ter **6 andares**, exigindo a modernização completa do sistema de elevador.
+Este projeto simula o funcionamento de um **elevador inteligente** em um prédio comercial, desenvolvido na disciplina de **IoT com Arduino** no SENAI. A simulação roda inteiramente no **Tinkercad**, eliminando a necessidade de hardware físico durante o desenvolvimento.
 
-O desafio foi expandir o projeto original de forma modular e organizada, mantendo a mesma lógica de controle e adicionando novos componentes ao circuito. O sistema simula com fidelidade o comportamento real de um elevador:
-
-- O elevador **parte sempre do 1º andar** (LED verde aceso por padrão)
-- Ao pressionar um botão, o andar atual **apaga** e o solicitado **acende**
-- Um delay de `800ms` simula o **tempo de deslocamento** entre andares
-- A variável `andarAtual` **rastreia o estado** e evita chamadas redundantes
-
----
-
-## 🗂 Estrutura do Repositório
+A evolução central do projeto foi a **expansão de 3 para 6 andares**, provando que uma arquitetura de código bem pensada permite crescimento sem reescritas — um conceito fundamental em sistemas embarcados.
 
 ```
-📁 elevador-arduino/
-│
-├── 🖼  Print_do_Design.png              — screenshot do circuito no Tinkercad
-├── 📄 Código_Fonte_Comentado.ino       — código principal comentado
-├── 📄 Explicacao_Logica_Elevador.pdf   — documentação da lógica de expansão
-└── 📄 README.md                        — este arquivo
+  ┌─────┐
+  │  6  │ ← novo
+  ├─────┤
+  │  5  │ ← novo
+  ├─────┤
+  │  4  │ ← novo
+  ├─────┤
+  │  3  │
+  ├─────┤
+  │  2  │
+  ├─────┤
+  │  1  │  🔲 LED + 🔘 Botão por andar
+  └─────┘
+  Arduino UNO
 ```
----
-
-## 🔌 Mapeamento de Pinos
-
-| Andar | Função    | Pino LED | Pino Botão | Cor do LED   |
-|:-----:|-----------|:--------:|:----------:|:------------:|
-| 1º    | Térreo    | 3        | 2          | 🟢 Verde     |
-| 2º    | —         | 5        | 4          | 🔴 Vermelho  |
-| 3º    | —         | 7        | 6          | 🟡 Amarelo   |
-| 4º    | —         | 9        | 8          | ⚫ Cinza     |
-| 5º    | —         | 11       | 10         | 🔵 Azul      |
-| 6º    | Cobertura | 13       | 12         | 🟤 Marrom    |
 
 ---
 
-## 🧰 Lista de Componentes
+## ⚡ Componentes do Circuito
 
-| Componente            | Qtd. | Função                              |
-|-----------------------|:----:|-------------------------------------|
-| Arduino UNO           | 1    | Microcontrolador principal          |
-| LED 5mm               | 6    | Indicador visual do andar atual     |
-| Botão push-button     | 6    | Chamada do elevador por andar       |
-| Resistor 220 Ω        | 6    | Proteção dos LEDs contra sobrecarga |
-| Resistor 10 kΩ        | 6    | Pull-down dos botões                |
-| Protoboard 830 pontos | 1    | Montagem e organização do circuito  |
-| Cabos jumper          | ~20  | Conexões entre Arduino e protoboard |
+| Componente | Quantidade | Função |
+|---|:---:|---|
+| 🟢 **LED** | 6 | Indicador visual de cada andar |
+| 🔘 **Botão (Push Button)** | 6 | Chamada do elevador por pavimento |
+| **Resistor** | 6 | Proteção dos LEDs e entradas digitais |
+| **Protoboard** | 1 | Montagem e interligação do circuito |
+| **Arduino UNO** | 1 | Microcontrolador principal |
 
 ---
 
-## 💡 Lógica do Código
+## 🧠 Lógica do Código
 
-### Inicialização
+A inteligência do elevador está organizada em três pilares:
 
-O elevador parte do **1º andar** assim que o Arduino é ligado — sem nenhuma interação necessária.
-
+### 📍 Variável de Estado
 ```cpp
-void setup() {
-  // configura todos os pinos...
+int andarAtual = 1; // posição atual do elevador (1 a 6)
+```
+Controla em qual andar o elevador se encontra a qualquer momento do programa.
 
-  // LED do 1º andar já nasce aceso
-  digitalWrite(ledVerde, HIGH);
+### ⏱️ Simulação de Deslocamento
+```cpp
+// acende os LEDs em sequência simulando o movimento
+digitalWrite(ledAndar[i], HIGH);
+delay(800); // tempo de "viagem" entre andares
+digitalWrite(ledAndar[i], LOW);
+```
+A função `delay()` cria o efeito visual de subida e descida, acendendo cada LED intermediário durante o trajeto.
+
+### 🔀 Controle por `switch/case`
+```cpp
+switch (andarAtual) {
+  case 1:
+    // lógica do 1º andar
+    break;
+  case 2:
+    // lógica do 2º andar
+    break;
+  // ...
+  case 6:
+    // lógica do 6º andar — adicionado na expansão
+    break;
 }
 ```
-
-### Chamada de Andar
-
-Ao pressionar qualquer botão, o sistema executa três etapas:
-
-```
-[Botão pressionado] → apagarTodos() → delay(800ms) → acender LED do destino
-```
-
-```cpp
-if (digitalRead(botaoVermelho) == HIGH && andarAtual != 2) {
-  apagarTodos();                    // apaga o andar atual
-  delay(800);                       // simula o deslocamento
-  digitalWrite(ledVermelho, HIGH);  // acende o destino
-  andarAtual = 2;                   // atualiza o estado
-}
-```
-
-### Função `apagarTodos()`
-
-Centraliza o reset visual — todos os LEDs vão a `LOW` de uma vez, garantindo que nunca haja dois andares acesos simultaneamente.
-
-```cpp
-void apagarTodos() {
-  digitalWrite(ledVerde,    LOW);
-  digitalWrite(ledVermelho, LOW);
-  digitalWrite(ledAmarelo,  LOW);
-  digitalWrite(ledCinza,    LOW);
-  digitalWrite(ledAzul,     LOW);
-  digitalWrite(ledMarrom,   LOW);
-}
-```
-
-### Variável de Estado
-
-A condição `andarAtual != X` impede que o elevador "viaje" para o andar em que já se encontra, evitando piscadas desnecessárias no LED.
+A estrutura `switch/case` permite adicionar novos andares **sem alterar o comportamento dos existentes** — basta inserir um novo `case`.
 
 ---
 
-## 📐 Diagrama de Funcionamento
+## 📈 A Expansão: de 3 para 6 Andares
+
+O objetivo central do projeto foi crescer o sistema de forma controlada:
+
+1. **Mapeamento dos novos pinos** → cada andar novo recebe um pino de LED e um de botão
+2. **Novos `case` no `switch`** → o comportamento de cada andar é encapsulado no seu bloco
+3. **Zero alteração na lógica principal** → a estrutura de controle permaneceu idêntica
+
+Isso demonstra na prática o princípio **Open/Closed** — aberto para extensão, fechado para modificação.
+
+---
+
+## 💡 Conceitos Aplicados
+
+- Programação estruturada em **C/C++ para Arduino**
+- **Automação** e controle de hardware via software
+- **Sistemas embarcados** e mapeamento de pinos digitais
+- Prototipagem virtual com **Tinkercad**
+- **Escalabilidade** de software em projetos embarcados
+- Uso de **máquina de estados** simples com `switch/case`
+
+---
+
+## 🚀 Como Simular
+
+1. Acesse [tinkercad.com](https://www.tinkercad.com/) e faça login
+2. Importe o arquivo do projeto ou monte o circuito conforme o esquemático
+3. Cole o código no editor do Tinkercad
+4. Clique em **"Iniciar Simulação"**
+5. Pressione os botões de cada andar e observe os LEDs respondendo
+
+---
+
+## 📁 Estrutura do Repositório
 
 ```
-BOOT
- │
- └─► LED Verde (Andar 1) = ON          ← estado inicial
-          │
-          ▼
-     [ loop() ]
-          │
-          ├─ botão pressionado? ──NÃO──► aguarda...
-          │
-          └─ SIM
-               │
-               ├─ é o andar atual? ──SIM──► ignora
-               │
-               └─ NÃO
-                    │
-                    ├─ apagarTodos()
-                    ├─ delay(800ms)
-                    ├─ acende LED destino
-                    └─ atualiza andarAtual
-                              │
-                              └─► volta ao [ loop() ]
+📦 elevador-arduino
+ ┣ 📄 elevador.ino       → código principal do Arduino
+ ┣ 📄 README.md          → você está aqui
+ ┗ 📄 Explicação_Lógica.docx  → documentação do projeto
 ```
 
 ---
 
-## 🎯 Objetivos de Aprendizagem
-
-A atividade praticou os seguintes conceitos:
-
-- ✅ Lógica de programação e variáveis de estado
-- ✅ Estruturas condicionais (`if / else`)
-- ✅ Manipulação de entradas e saídas digitais (`digitalRead` / `digitalWrite`)
-- ✅ Uso de `delay()` para simular tempo real
-- ✅ Organização modular de código com funções
-- ✅ Automação e simulação de sistemas embarcados
-- ✅ Raciocínio lógico aplicado à IoT
-
----
-
-## 🏫 Informações da Atividade
-
-| Campo       | Detalhe                                |
-|-------------|----------------------------------------|
-| Instituição | SENAI "A. Jacob Lafer"                 |
-| Curso       | Técnico em Desenvolvimento de Sistemas |
-| Disciplina  | IoT com Arduino e Tinkercad            |
-| Atividade   | Aulas 24 e 25 — Elevador no Tinkercad  |
-| Plataforma  | Tinkercad (Autodesk)                   |
-
----
+## 👨‍💻 Autor
 
 <div align="center">
 
-Feito por **[@vinycius.art](https://github.com/VinyciusXZ)**
+<br/>
+
+**Vinycius Lopes** · [@VinyciusXZ](https://github.com/VinyciusXZ)
+
+*Técnico em Tecnologia e Inovação Digital · SENAI "A. Jacob Lafer"*
+
+[![Instagram](https://img.shields.io/badge/@vinycius.art-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://instagram.com/vinycius.art)
+[![X](https://img.shields.io/badge/@vinyciusart-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/vinyciusart)
+
+<br/>
+
+*Projeto desenvolvido nas Aulas 24 & 25 — Disciplina de IoT com Arduino · 2025*
 
 </div>
